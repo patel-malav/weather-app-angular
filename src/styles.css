@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --main-bg-color: #a1b2c3;
+  --main-txt-color: #c48448;
+  --min-width: 320px;
+  /* --mobile-padding: 1rem; */
+  /* --tablet-padding: 1.8rem; */
+  /* --desktop-padding: 2.5rem; */
+  /* --mobile-margin: 1rem; */
+  /* --tablet-margin: 1.8rem; */
+  /* --desktop-margin: 2.5rem; */
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100%;
+  min-width: var(--min-width);
+  background-color: var(--main-bg-color);
+}

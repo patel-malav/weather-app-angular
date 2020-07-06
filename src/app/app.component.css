@@ -1,0 +1,85 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr 1fr 3fr min-content;
+  grid-template-areas:
+    "👆👆"
+    "👉👆"
+    "👉👇"
+    "👌👌"
+    "👇👇";
+}
+
+.top {
+  grid-area: 👆👆;
+}
+
+.center {
+  grid-area: 👌👌;
+}
+
+.right-top {
+  grid-area: 👉👆;
+}
+
+.right-bottom {
+  grid-area: 👉👇;
+}
+
+.left-top {
+  grid-area: 👈👆;
+}
+
+.left-bottom {
+  grid-area: 👈👇;
+}
+
+.bottom {
+  grid-area: 👇👇;
+}
+
+/*==========  Mobile First Method  ==========*/
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  :host {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content 1fr 3fr min-content;
+    grid-template-areas:
+      "👆👆 👆👆"
+      "👉👆 👉👇"
+      "👌👌 👌👌"
+      "👇👇 👇👇";
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  :host {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: min-content 1fr 1fr min-content;
+    grid-template-areas:
+      "👆👆 👆👆"
+      "👌👌 👉👆 "
+      "👌👌 👉👇"
+      "👇👇 👇👇";
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  :host {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: min-content 1fr 2fr min-content;
+    grid-template-areas:
+      "👆👆 👆👆"
+      "👌👌 👉👆 "
+      "👌👌 👉👇"
+      "👇👇 👇👇";
+  }
+}
+/* Large Devices, Wide Screens */
+
+@media only screen and (min-width: 1200px) {
+}

@@ -20,17 +20,30 @@ export class CityComponent implements OnChanges {
   constructor(public weather: WeatherDataService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.data = this.weather.searchCity(changes.name.currentValue).pipe(
-      catchError((err) => {
-        this.error = err;
-        this.name = null;
-        return of(null);
+    this.data = this.weather.searchCity(changes.name.currentValue, 30000).pipe(
+      catchError((err: HttpErrorResponse) => {
+        console.log(err);
+        switch (err.status) {
+          case 0:
+            return of(this.weather.retriveStoredData(this.name));
+          case 404:
+            this.error = err;
+            this.name = null;
+            return of(null);
+          default:
+            return of(null);
+        }
       }),
-      tap((data) => console.log(data))
+      tap(console.log)
     );
   }
 
   toggleInput(): void {
+    this.input = !this.input;
+  }
+
+  toggleEdit(): void {
+    this.edit = !this.edit;
     this.input = !this.input;
   }
 
@@ -40,18 +53,14 @@ export class CityComponent implements OnChanges {
      */
     const [city, state, country] = input.value.split(',');
     this.name = city;
-    this.data = this.weather.searchCity(city).pipe(
+    this.data = this.weather.searchCity({ city }, 30000).pipe(
       catchError((err) => {
+        console.log(err);
         this.error = err;
         this.name = null;
         return of(null);
       }),
       tap(console.log)
     );
-  }
-
-  toggleEdit(): void {
-    this.edit = !this.edit;
-    this.input = !this.input;
   }
 }

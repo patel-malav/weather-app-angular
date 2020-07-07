@@ -105,6 +105,13 @@
               "devServerTarget": "weather-app-angular:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/weather-app-angular",
+            "siteId": "f554bdd7-a6d5-4e20-a582-006ff97de86e"
+          }
         }
       }
     }

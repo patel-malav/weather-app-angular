@@ -3,10 +3,9 @@
 }
 
 :host > div:first-child {
-  /* min-height: 180px; */
   height: 380px;
 }
-
+/* Custom Styling noCity Markup */
 .noCity {
   height: 100%;
   display: flex;
@@ -16,13 +15,13 @@
 
 button {
   margin: auto;
-  /* min-width: 120px; */
 }
 
 .input-group {
   padding: 0 var(--mobile-padding);
 }
 
+/* Custom Styling of panel body elements */
 .panel-body {
   height: 300px;
   background-repeat: no-repeat;
@@ -30,6 +29,11 @@ button {
   background-size: 192px 192px;
 }
 
+.panel-body * {
+  color: #f0ad4e;
+}
+
+/* Panel body items */
 .flex {
   display: flex;
 }
@@ -38,10 +42,6 @@ button {
   justify-content: space-around;
   justify-items: center;
   align-items: center;
-}
-
-.panel-body * {
-  color: #f0ad4e;
 }
 
 h3 {

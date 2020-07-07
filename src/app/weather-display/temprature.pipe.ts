@@ -5,6 +5,11 @@ import { temperature } from 'units-converter';
   name: 'temprature',
 })
 export class TempraturePipe implements PipeTransform {
+  /**
+   * Angular Pipe to convert temprature values
+   * @param value : Value in term of kelvin
+   * @param system : System to covert
+   */
   transform(value: number, system?: 'metric' | 'imperial'): number {
     switch (system) {
       case 'metric':

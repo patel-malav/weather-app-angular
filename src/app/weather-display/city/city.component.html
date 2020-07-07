@@ -4,7 +4,9 @@
   >
 </div>
 
+<!-- Show this template in case of no city is selected -->
 <ng-template #noCity>
+  <!-- Show the city name if panel is being edited -->
   <div *ngIf="edit" class="panel-heading panel-heading-extended">
     <a class="panel-action" (click)="toggleEdit()">
       <span class="glyphicon glyphicon-pencil offset-right" aria-hidden="true">
@@ -14,7 +16,10 @@
       <h4 class="panel-title panel-title-big">New Name</h4>
     </a>
   </div>
+
+  <!-- Markup for the template -->
   <div class="noCity">
+    <!-- Show a input toggle button else input Markup -->
     <button
       *ngIf="!input; else find"
       class="btn btn-primary btn-raised"
@@ -24,12 +29,15 @@
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       Add a City
     </button>
+
+    <!-- In case of error show error message -->
     <p *ngIf="error" class="bg-danger text-center">
       <b>{{ error.error.message }}</b>
     </p>
   </div>
 </ng-template>
 
+<!-- Input Markup in case of noCity or Edit -->
 <ng-template #find>
   <h5 *ngIf="input" class="text-center">
     <b>City Name</b>, Opt. State Name, Opt. Country Name
@@ -57,9 +65,12 @@
   </button>
 </ng-template>
 
+<!-- Markup  to show in case of city data is recieved -->
 <ng-template #citySelected>
+  <!-- Animated Progress bar to show in case of loading or Markup -->
   <ng-container *ngIf="data | async as data; else progress">
     <div class="panel-heading panel-heading-extended">
+      <!-- Edit Button  -->
       <a class="panel-action" (click)="toggleEdit()">
         <span
           class="glyphicon glyphicon-pencil offset-right"
@@ -67,10 +78,12 @@
         >
         </span>
       </a>
+      <!-- City Name, @todo get history and graph by clicking -->
       <a href="#">
         <h4 class="panel-title panel-title-big">{{ data.name | titlecase }}</h4>
       </a>
     </div>
+    <!-- Background image for the weather -->
     <div
       class="panel-body bg-primary"
       [ngStyle]="{
@@ -80,28 +93,34 @@
           '@2x.png)'
       }"
     >
+      <!-- Show all weather type, region can have multiple weather i.e. sunny and cloudy -->
       <div class="flex justify-center">
         <h3 *ngFor="let weather of data.weather">
           <b>{{ weather.main }}</b>
         </h3>
       </div>
+      <!-- Temprature Info -->
       <div class="flex justify-center">
         <h3><b>Temprature</b></h3>
         <h5>Max - {{ data.main.temp_max | temprature: "metric" }} &#176;C</h5>
         <h5>Min - {{ data.main.temp_min | temprature: "metric" }} &#176;C</h5>
       </div>
+      <!-- Eniorment Info -->
       <div class="flex justify-center">
         <h5>Cloudiness: {{ data.clouds.all }} &#37;</h5>
         <h5>Humidity: {{ data.main.humidity }} &#37;</h5>
       </div>
+      <!-- Wind Info, @todo show directions -->
       <div class="flex justify-center">
         <h5>Pressure: {{ data.main.pressure | pressure: "metric" }} bar</h5>
         <h5>Wind: {{ data.wind.speed | speed: "metric" }} km/h</h5>
       </div>
+      <!-- Daylight Info -->
       <div class="flex justify-center">
         <h5>Sunrise: {{ data.sys.sunrise * 1000 | date: "HH:mm:ss" }}</h5>
         <h5>Sunset: {{ data.sys.sunset * 1000 | date: "HH:mm:ss" }}</h5>
       </div>
+      <!-- Date -->
       <div class="flex justify-center">
         <h3>Date - {{ data.dt * 1000 | date: "dd/MM/yy" }}</h3>
       </div>
@@ -109,6 +128,7 @@
   </ng-container>
 </ng-template>
 
+<!-- Progress to indicated network laoding, @todo use spinner -->
 <ng-template #progress>
   <div>
     {{ error }}

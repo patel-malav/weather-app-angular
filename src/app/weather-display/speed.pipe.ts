@@ -5,6 +5,11 @@ import { speed } from 'units-converter';
   name: 'speed',
 })
 export class SpeedPipe implements PipeTransform {
+  /**
+   * Angular Pipe to convert speed values
+   * @param value : Value in term of meter/second
+   * @param system : System to covert
+   */
   transform(value: number, system?: 'metric' | 'imperial'): number {
     switch (system) {
       case 'metric':

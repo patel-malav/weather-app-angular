@@ -39,7 +39,7 @@
   grid-area: 👇👇;
 }
 
-/*==========  Mobile First Method  ==========*/
+/* ==========  Mobile First Method  ==========
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width: 480px) {
@@ -57,7 +57,7 @@
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
   :host {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: min-content 1fr 1fr min-content;
     grid-template-areas:
       "👆👆 👆👆"
@@ -70,7 +70,7 @@
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
   :host {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 4fr 1fr;
     grid-template-rows: min-content 1fr 2fr min-content;
     grid-template-areas:
       "👆👆 👆👆"
@@ -80,6 +80,5 @@
   }
 }
 /* Large Devices, Wide Screens */
-
-@media only screen and (min-width: 1200px) {
-}
+/* @media only screen and (min-width: 1200px) {
+} */

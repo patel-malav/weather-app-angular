@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  openweatherApiKey: '<Your-Secret-Dev-Key>',
-  openweatherApi: 'api.openweathermap.org/data/2.5/weather',
+  openweatherApiKey: '8d1daa20188bbfba252ac88c15247a73',
+  openweatherApi: 'https://api.openweathermap.org/data/2.5/',
 };
 
 /*

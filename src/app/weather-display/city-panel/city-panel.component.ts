@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherDataService } from '../weather-data.service';
 
 @Component({
   selector: 'app-city-panel',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./city-panel.component.css'],
 })
 export class CityPanelComponent implements OnInit {
-  constructor() {}
+  constructor(private weather: WeatherDataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.weather
+    //   .getForecast({ name: 'ahmedabad' })
+    //   .subscribe((data) => console.log(data));
+  }
 }

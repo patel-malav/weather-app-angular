@@ -1,0 +1,128 @@
+<div class="panel panel-default">
+  <span *ngIf="name && !edit; then citySelected; else noCity"
+    >Data is selected</span
+  >
+</div>
+
+<ng-template #noCity>
+  <div *ngIf="edit" class="panel-heading panel-heading-extended">
+    <a class="panel-action" (click)="toggleEdit()">
+      <span class="glyphicon glyphicon-pencil offset-right" aria-hidden="true">
+      </span>
+    </a>
+    <a href="#">
+      <h4 class="panel-title panel-title-big">New Name</h4>
+    </a>
+  </div>
+  <div class="noCity">
+    <button
+      *ngIf="!input; else find"
+      class="btn btn-primary btn-raised"
+      type="button"
+      (click)="toggleInput()"
+    >
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      Add a City
+    </button>
+    <p *ngIf="error" class="bg-danger text-center">
+      <b>{{ error.error.message }}</b>
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #find>
+  <h5 *ngIf="input" class="text-center">
+    <b>City Name</b>, Opt. State Name, Opt. Country Name
+  </h5>
+  <div *ngIf="input" class="input-group">
+    <input type="search" placeholder="Add a city" class="form-control" #city />
+    <span class="input-group-btn">
+      <button
+        type="button"
+        class="btn btn-primary btn-raised"
+        (click)="search(city)"
+      >
+        <span class="glyphicon glyphicon-search" aria-label="find"></span>
+      </button>
+    </span>
+  </div>
+  <button
+    *ngIf="input"
+    class="btn btn-accent btn-raised"
+    type="button"
+    (click)="toggleInput()"
+  >
+    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    Cancel
+  </button>
+</ng-template>
+
+<ng-template #citySelected>
+  <ng-container *ngIf="data | async as data; else progress">
+    <div class="panel-heading panel-heading-extended">
+      <a class="panel-action" (click)="toggleEdit()">
+        <span
+          class="glyphicon glyphicon-pencil offset-right"
+          aria-hidden="true"
+        >
+        </span>
+      </a>
+      <a href="#">
+        <h4 class="panel-title panel-title-big">{{ data.name | titlecase }}</h4>
+      </a>
+    </div>
+    <div
+      class="panel-body bg-primary"
+      [ngStyle]="{
+        'background-image':
+          'url(http://openweathermap.org/img/wn/' +
+          data.weather[0].icon +
+          '@2x.png)'
+      }"
+    >
+      <div class="flex justify-center">
+        <h3 *ngFor="let weather of data.weather">
+          <b>{{ weather.main }}</b>
+        </h3>
+      </div>
+      <div class="flex justify-center">
+        <h3><b>Temprature</b></h3>
+        <h5>Max - {{ data.main.temp_max | temprature: "metric" }} &#176;C</h5>
+        <h5>Min - {{ data.main.temp_min | temprature: "metric" }} &#176;C</h5>
+      </div>
+      <div class="flex justify-center">
+        <h5>Cloudiness: {{ data.clouds.all }} &#37;</h5>
+        <h5>Humidity: {{ data.main.humidity }} &#37;</h5>
+      </div>
+      <div class="flex justify-center">
+        <h5>Pressure: {{ data.main.pressure | pressure: "metric" }} bar</h5>
+        <h5>Wind: {{ data.wind.speed | speed: "metric" }} km/h</h5>
+      </div>
+      <div class="flex justify-center">
+        <h5>Sunrise: {{ data.sys.sunrise * 1000 | date: "HH:mm:ss" }}</h5>
+        <h5>Sunset: {{ data.sys.sunset * 1000 | date: "HH:mm:ss" }}</h5>
+      </div>
+      <div class="flex justify-center">
+        <h3>Date - {{ data.dt * 1000 | date: "dd/MM/yy" }}</h3>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #progress>
+  <div>
+    {{ error }}
+  </div>
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-striped active"
+      role="progressbar"
+      aria-valuenow="45"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      style="width: 100%;"
+    >
+      <span class="sr-only">Loading ...</span>
+    </div>
+  </div>
+</ng-template>

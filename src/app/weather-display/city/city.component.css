@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+:host > div:first-child {
+  /* min-height: 180px; */
+  height: 380px;
+}
+
+.noCity {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+button {
+  margin: auto;
+  /* min-width: 120px; */
+}
+
+.input-group {
+  padding: 0 var(--mobile-padding);
+}
+
+.panel-body {
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 192px 192px;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+}
+
+.panel-body * {
+  color: #f0ad4e;
+}
+
+h3 {
+  margin: 0;
+}

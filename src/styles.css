@@ -3,12 +3,13 @@
   --main-bg-color: #a1b2c3;
   --main-txt-color: #c48448;
   --min-width: 320px;
-  /* --mobile-padding: 1rem; */
-  /* --tablet-padding: 1.8rem; */
-  /* --desktop-padding: 2.5rem; */
-  /* --mobile-margin: 1rem; */
-  /* --tablet-margin: 1.8rem; */
-  /* --desktop-margin: 2.5rem; */
+  --max-width: 1170px;
+  --mobile-padding: 1rem;
+  --tablet-padding: 1.8rem;
+  --desktop-padding: 2.5rem;
+  --mobile-margin: 1rem;
+  --tablet-margin: 1.8rem;
+  --desktop-margin: 2.5rem;
 }
 
 html {
